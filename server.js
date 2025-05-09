@@ -13,8 +13,9 @@ app.use('/contacts', contactsRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    app.listen(process.env.PORT, () => {
-      console.log('Server is running');
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
     });
   })
   .catch((err) => console.error(err));
