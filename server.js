@@ -6,6 +6,9 @@ const cors = require('cors');
 dotenv.config();
 
 const app = express();
+app.post('/test', (req, res) => {
+  res.send('Test route works!');
+});
 app.use(express.json());
 app.use(cors());
 

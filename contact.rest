@@ -1,0 +1,11 @@
+### Test POST /contacts
+POST http://localhost:3000/contacts
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "1990-01-01"
+}
