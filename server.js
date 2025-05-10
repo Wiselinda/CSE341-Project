@@ -3,23 +3,34 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-dotenv.config();
+dotenv.config(); // Load environment variables early
 
 const app = express();
-app.post('/test', (req, res) => {
-  res.send('Test route works!');
-});
+
+// Middleware
 app.use(express.json());
 app.use(cors());
 
+// Test route
+app.post('/test', (req, res) => {
+  res.send('Test route works!');
+});
+
+// Routes
 const contactsRoutes = require('./routes/contacts');
 app.use('/contacts', contactsRoutes);
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    const port = process.env.PORT || 3000;
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
-    });
-  })
-  .catch((err) => console.error('MongoDB connection error:', err));
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => {
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+})
+.catch((err) => {
+  console.error('MongoDB connection error:', err.message);
+});
