@@ -1,5 +1,17 @@
-### Test POST /contacts
-POST http://localhost:3000/contacts
+### Get all contacts
+GET https://cse341-project-2-n9dh.onrender.com/contacts
+Content-Type: application/json
+
+###
+
+### Get contact by ID (replace :id with a real ID from your DB)
+GET https://cse341-project-2-n9dh.onrender.com/contacts/:id
+Content-Type: application/json
+
+###
+
+### Create a new contact
+POST https://cse341-project-2-n9dh.onrender.com/contacts
 Content-Type: application/json
 
 {
@@ -9,3 +21,23 @@ Content-Type: application/json
   "favoriteColor": "Blue",
   "birthday": "1990-01-01"
 }
+
+###
+
+### Update a contact (replace :id with an actual contact ID)
+PUT https://cse341-project-2-n9dh.onrender.com/contacts/:id
+Content-Type: application/json
+
+{
+  "firstName": "Johnny",
+  "lastName": "Doe",
+  "email": "johnny@example.com",
+  "favoriteColor": "Green",
+  "birthday": "1990-01-01"
+}
+
+###
+
+### Delete a contact (replace :id with an actual contact ID)
+DELETE https://cse341-project-2-n9dh.onrender.com/contacts/:id
+Content-Type: application/json
